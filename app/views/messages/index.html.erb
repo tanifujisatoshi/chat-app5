@@ -1,4 +1,13 @@
 <div class="wrapper">
-  <%= render "side_bar" %>
-  <%= render "main_chat" %>
+<%# ブラウザ全体を指している %>
+  <div class="side-bar">
+  <%# 左側の要素を表している %>
+    <%= render "side_bar" %>
+  <%# _side_bar.html.erbを読み込んでいる %>
+  </div>
+  <div class="chat">
+  <%# 右側の要素を表している %>
+    <%= render "main_chat" %>
+    <%# _main_chat_.html.erbを読み込んでいる %>
+  </div>
 </div>
