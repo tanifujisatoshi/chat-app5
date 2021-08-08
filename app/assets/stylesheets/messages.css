@@ -14,14 +14,62 @@
 .side-bar-header {
   height: 100px;
 padding: 0 20px;
-/* カリキュラムの指示通りに要素の左右の内側の余白を20pxにしている 0は上下の内側の余白はないことを示している */
+background-color: #253141;
+/* カリキュラムの指示で親要素のside-bar-headerの背景色は#253141とあるのでこのようにしている */
+  display: flex;
+/*  親要素のside-bar-headerの子要素にあたるheader-nameとcreate-roomを横並びにさせるため*/
+  justify-content: space-between;
+/* 親要素にjustify-contentプロパティを使うことでその子要素の横の移動ができる */
+/* space-betweenを掛けてあげることで子要素が左右の両端により等間隔の幅を作る事ができる */
+  align-items: center;
+/* align-itemsプロパティを使う事で子要素の縦の移動が可能になる  */
+/* centerを掛けてあげる事で縦の移動をするにあたって中央に移動させる事ができる */
+}
+
+.header-name a{
+/* CSSをあてる要素名をheader-name aとしている理由はheader-nameというdivのaタグに(今回はTom)CSSを当てたいからである */
+  font-size: 16px;
+  color: #FAFAFA;
+/* 文字の大きさと文字の色はカリキュラムの指示を確認する */
+  text-decoration: none;
+/* text-decorationプロパティにnoneを掛けてあげることでaタグを使用したときに自動的にaタグで囲われて部分に下線が生じてしまう。それを消している */
+}
+
+.create-room a {
+/* CSSをあてたい要素名がこのようになっている理由はheader-name aの説明と同じである */
+  font-size: 10px;
+  color: deepskyblue;
+/* 文字のサイズと文字色の指定についてはカリキュラムの指示通りにすれば良い */
+  border: 1px solid lightblue;
+/* 1pxは太さを  solidは枠線のスタイルを lightblueは枠線の色を指定している */
+  padding: 14px;
+/* create-room aは枠線までを要素としているのでその要素の上下左右の内側に14pxずつ余白をあけている */
+  text-decoration: none;
+/* このプロパティの説明についてはheader-name aのものと同じである */
 }
 
 .rooms {
+/* roomsという要素はside-bar-headerの下にある要素である */
   background-color: #2F3E51;
   height: calc(100vh - 100px);
 padding: 0 20px;
-/* こちらもカリキュラムの指示通り要素の左右の内側に20pxの余白を開けている */
+overflow: scroll;
+/* このプロパティの説明はカリキュラム内にあったので省きます */
+}
+
+.room {
+  padding: 20px 0 40px;
+/* room-nameの親要素であるroomにpaddingプロパティをかけることでその子要素にそれが適用される */
+/* 子要素に直接プロパティをかけるのではなく親要素にかけるということが重要！ */
+/* roomという要素内に上に20px 左右に0px 下に40px余白をあけている */
+}
+
+.room-name a {
+/* room-nameという要素のaタグにCSSをあてたいためこのような要素名にしている */
+  text-decoration: none;
+/* aタグによって発生する下線を消している */
+  color: white;
+/* 文字色を指定している */
 }
 
 .chat {
