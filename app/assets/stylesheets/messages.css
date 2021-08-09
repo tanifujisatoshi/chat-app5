@@ -1,0 +1,231 @@
+.wrapper {
+  display: flex;
+/* wrapperの子要素であるside-barとchatを横並びにさせるため */
+}
+.side-bar {
+  background-color: #253141;
+  width: 300px;
+  /* 横幅を300pxに固定 */
+  height: 100vh;
+  /* 高さは開いているブラウザによって表示が変わる */
+  /* しかし開いているブラウザの画面いっぱいの高さ(=100vh)で表示される */
+}
+
+.side-bar-header {
+  height: 100px;
+padding: 0 20px;
+background-color: #253141;
+/* カリキュラムの指示で親要素のside-bar-headerの背景色は#253141とあるのでこのようにしている */
+  display: flex;
+/*  親要素のside-bar-headerの子要素にあたるheader-nameとcreate-roomを横並びにさせるため*/
+  justify-content: space-between;
+/* 親要素にjustify-contentプロパティを使うことでその子要素の横の移動ができる */
+/* space-betweenを掛けてあげることで子要素が左右の両端により等間隔の幅を作る事ができる */
+  align-items: center;
+/* align-itemsプロパティを使う事で子要素の縦の移動が可能になる  */
+/* centerを掛けてあげる事で縦の移動をするにあたって中央に移動させる事ができる */
+}
+
+.header-name a{
+/* CSSをあてる要素名をheader-name aとしている理由はheader-nameというdivのaタグに(今回はTom)CSSを当てたいからである */
+  font-size: 16px;
+  color: #FAFAFA;
+/* 文字の大きさと文字の色はカリキュラムの指示を確認する */
+  text-decoration: none;
+/* text-decorationプロパティにnoneを掛けてあげることでaタグを使用したときに自動的にaタグで囲われて部分に下線が生じてしまう。それを消している */
+}
+
+.create-room a {
+/* CSSをあてたい要素名がこのようになっている理由はheader-name aの説明と同じである */
+  font-size: 10px;
+  color: deepskyblue;
+/* 文字のサイズと文字色の指定についてはカリキュラムの指示通りにすれば良い */
+  border: 1px solid lightblue;
+/* 1pxは太さを  solidは枠線のスタイルを lightblueは枠線の色を指定している */
+  padding: 14px;
+/* create-room aは枠線までを要素としているのでその要素の上下左右の内側に14pxずつ余白をあけている */
+  text-decoration: none;
+/* このプロパティの説明についてはheader-name aのものと同じである */
+}
+
+.rooms {
+/* roomsという要素はside-bar-headerの下にある要素である */
+  background-color: #2F3E51;
+  height: calc(100vh - 100px);
+padding: 0 20px;
+overflow: scroll;
+/* このプロパティの説明はカリキュラム内にあったので省きます */
+}
+
+.room {
+  padding: 20px 0 40px;
+/* room-nameの親要素であるroomにpaddingプロパティをかけることでその子要素にそれが適用される */
+/* 子要素に直接プロパティをかけるのではなく親要素にかけるということが重要！ */
+/* roomという要素内に上に20px 左右に0px 下に40px余白をあけている */
+}
+
+.room-name a {
+/* room-nameという要素のaタグにCSSをあてたいためこのような要素名にしている */
+  text-decoration: none;
+/* aタグによって発生する下線を消している */
+  color: white;
+/* 文字色を指定している */
+}
+
+.chat {
+  background-color: #FFFFFF;
+  width: calc(100vw - 300px);
+/* サイドバーの横幅が300pxであるため表示されるブラウザ画面のいっぱいの横幅から(=100vw) */
+/* サイドバーの横幅を引いたものがchatの横幅である */
+}
+
+.chat-header {
+  height: 100px;
+padding: 0 40px;
+display: flex;
+/*この要素にdisplay: flexをかけることでその子要素にあたるleft-headerとright-headerが横並びになる */
+  justify-content: space-between;
+/* justify-contentプロパティをかけることで子要素の横の移動が可能になりさらにspace-betweenを指定することで子要素が左右両端に配置される。子要素が3つ以上の場合は等間隔の余白をあけることができる */
+}
+
+.header-title {
+/* チャットルーム名にCSSをあてたいのでこの要素名にしている */
+  color: #333;
+  font-size: 24px;
+/* カリキュラムの指示通りにやるとこのようになる */
+  margin-top: 36px;
+/* hogehugaの外部の上の部分に36pxの余白をあけている */
+/* left-headerにpadding-top: 36px;を掛けても全く同じ状態になる */
+}
+
+.header-button {
+/* チャットを終了する の要素を表している */
+  margin-top: 40px;
+/* チャットを終了する の外部の上に40pxの余白をあけている */
+/* right-headerにpadding-top: 40px;をかけても同じになる */
+}
+
+.header-button a {
+/* header-buttonという要素のaタグにCSSをあてたいためこのような要素名にしている */
+/* どこのclassのaタグにCSSをあてたいかを示さなけれならないのでaタグの前にclass名を記述している */
+  text-decoration: none;
+/* aタグを使う事で生じる下線を消している */
+  border: 1px solid darkred;
+/*チャットを終了する の周りに太さが1px  枠線のスタイルが1本線 枠線の色がdarkredである枠線ができる */
+  color: darkred;
+/* チャットを終了する の文字の色について指定している */
+  padding: 20px;
+/* header-button aはチャットを終了する の枠までを要素としているためその枠の内側に余白をあけることで枠線と チャットを終了する の間の左右上下に20pxずつ余白が生まれる */
+}
+
+.messages {
+  background-color: #FAFAFA;
+  height: calc(100vh - 100px - 90px);
+padding: 46px 40px 0;
+overflow: scroll;
+/* overflowプロパティにscrollを指定することでmessagesの子要素であるmessageが親要素からはみ出したとしてもスクロールバーを表示して子要素を親要素内に収めることが出来る */
+}
+
+.message {
+  margin: 10px 0 0 0;
+/* messageという要素は投稿者名 投稿日時 投稿内容 を含む要素でありその要素の外部の上部分に10pxの余白をあけるように指示されているのでこのようにしている */
+/* ちなみにmargin-top: 10px;と記述を変更できる */
+}
+
+.upper-message{
+/* この子要素にあたるmessage-userとmessage-dateを横並びにさせるためにdisplay: flex;
+を掛けている */
+  display: flex;
+}
+
+.message-user {
+  color: #434a54;
+  font-size: 16px;
+/* カリキュラムにて投稿者名の詳細について指示されているのでそのようにしている */
+}
+
+.message-date {
+  color: #999;
+  font-size: 12px;
+/* カリキュラムにて投稿日時の詳細について指示されているのでそのようにしている */
+  padding-left: 10px;
+/* デフォルトの状態だとmessage-userとmessage-dateがくっついているのでそれらを離すためにmessage-dateの左の内側に余白をあけている */
+/* message-userにpadding-right: 10px;を掛けても挙動は同じになる */
+}
+
+.lower-message {
+/* lower-messageとmessage-contentの要素の範囲が全く一緒であるためこの要素をなくしてmessage-contentにmargin-top: 10px;を掛けても挙動は同じになる */
+  margin-top: 10px;
+/* 投稿内容と投稿者名の間に10pxの間隔をあけるように指示されているのでlower-messageの外部に10pxの余白をあけている */
+}
+
+.message-content {
+  color: #434a54;
+  font-size: 14px;
+/* カリキュラムに投稿内容についての詳細があるのでこのようにしている */
+  margin-bottom: 40px;
+/* 次に表示されるmessageに対して40pxの間隔をあけるように指示されているのでmessage-contentの外部の下の部分に余白を40pxあけている */
+}
+
+.form {
+  background-color: #DDDDDD;
+  height: 90px;
+padding: 20px 40px;
+display: flex;
+/* display: flex;を掛けてあげることでformの子要素であるform-inputとform-submitを横に並べることができる */
+}
+
+.form-input {
+/* form-inputの要素の範囲とform-messageの要素の範囲は全く同じであるためこの要素のプロパティの記述をform-messageのプロパティとして書き足しても挙動は前のものと変わらない */
+  background-color: white;
+  width: 100%;
+/* 幅の指定は特に無いため要素いっぱいの幅を取るためにwidth: 100%;と記述している */
+display: flex;
+/* 子要素であるform-messageとform-imageを横並びにさせるためにdisplay: flex;をかけている */
+}
+
+.form-message {
+  border: none;
+/* inputタグを使うと自動的に入力フォームの周りに枠線がついてしまうのでそれを取り払うものである */
+  height: 50px;
+  width: 100%;
+/* 検証ツールを使って試してみたがwidth: 100%;の記述は無くても挙動は変わらなかった */
+/* 理由はこの要素の親要素にあたるform-inputのプロパティとしてすでにwidth: 100%;と指定されているからである */
+  padding-left: 10px;
+}
+
+.form-submit {
+  background-color: #38AEF0;
+  border: none;
+/* inputタグによって送信ボタンの周りに枠線がついてしまうのでそれを取り払うためにborderプロパティを使用してそれにnoneを追加で指定している */
+  color: white;
+  font-size: 16px;
+  height: 50px;
+  margin-left: 15px;
+/* 送信ボタンとフォームの入力欄の間に15px余白をあけているため送信ボタンの外部の左側の余白を15pxにしている */
+  padding: 0 20px;
+/* 「送信」と送信ボタンの枠線の間に左右の余白が20pxずつ空いているためこのような記述をしている */
+/* ちなみに0は上下の余白を表している */
+}
+
+.form-image {
+  font-size: 12px;
+  background-color: lightblue;
+  color: white;
+  padding: 12px;
+/* 「画像」と画像ボタンの枠線の間に余白を取りたいためimage-fileの親要素にあたるform-imageの内側の左右上下の余白を12pxずつあけている */
+  width: 60px;
+/* 画像ボタンの横幅を60pxにしている */
+  margin: 5px 10px;
+/* 画像ボタンとフォーム入力欄の間に余白をとりたいためこの要素の外部の上下を5px 左右を10pxの余白をあけている */
+  text-align: center;
+/* text-alignプロパティを使うことでこの要素の子要素の水平方向の移動を可能にしていてさらにcenterを指定することで「画像」を中央に移動させることができる */
+}
+
+.hidden {
+  display: none;
+/* 要素のhiddenはinputタグのtype属性に付与されたclass属性でありtype="file"によって表示された
+「ファイルを選択」ボタンにCSSをあてるためのものである */
+/* どのようなCSSをあてているかというと「ファイルを選択」ボタンを消すためのCSSである それが 
+display: none;である */
+}

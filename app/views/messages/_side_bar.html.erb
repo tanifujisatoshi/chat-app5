@@ -1,0 +1,34 @@
+<div class="side-bar-header">
+  <div class="header-name">
+<%# 親要素のside-bar-headerの子要素としてheader-nameというdivを作っている %>
+    <a href="#">Tom</a>
+<%# href属性を使うときは必ず開始タグと終了タグにaタグを指定する %>
+<%# href属性でリンクの移動先を指定している 今回は空ののリンク先(#)を指定しているため %>
+<%# クリックしても画面は遷移しないがURLだけ変わる %>
+<%# http://localhost:3000/# に変わります！ %>
+  </div>
+  <div class="create-room">
+    <a href="#">チャットを作成する</a>
+<%# 親要素のside-bar-headerの子要素としてcreate-roomというdivを作っている %>
+<%# aタグとhref属性を使うことでリンク先を指定している %>
+  </div>
+</div>
+
+
+<div class="rooms">
+  <div class="room">
+<%# 親要素であるroomsに対して子要素となるroomというdivを作成している %>
+<%# roomsの孫要素にあたるroom-nameにpaddingプロパティをあてたいのでroom-nameの親要素であるroomというdivを作成している %>
+    <div class="room-name">
+      <a href="#">techroom1</a>
+<%# aタグとhref属性を使用してリンク先を決めている %>
+    </div>
+  </div>
+  <div class="room">
+    <div class="room-name">
+      <a href="#">techroom2</a>
+<%# 27行目から29行目の説明は19行目から26行目までのものと同じである %>
+    </div>
+  </div>
+</div>
+
