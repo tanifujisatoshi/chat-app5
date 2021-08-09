@@ -1,11 +1,96 @@
 <div class="chat-header">
+<%# 右側の要素で一番上の要素である %>
+  <div class="left-header">
+<%# chat-headerの子要素を横並べにさせるためにこのようなdivを作っている %>
+    <div class="header-title">
+<%# チャットルーム名にCSSをあてたいためにこのようなdivを作っている %>
+      hogefuga
+    </div>
+  </div>
+  <div class="right-header">
+<%# chat-headerの子要素を横並べにさせるためにこのようなdivを作っている %>
+    <div class="header-button">
+<%# チャット終了ボタンにCSSをあてたいためにこのようなdivを作っている %>
+      <a href="#">チャットを終了する</a>
+<%# aタグとhref属性を使用してリンク先を決めている %>
+<%# aタグで囲われた部分がリンク先として表示されるものである %>
+    </div>
+  </div>
 </div>
-<%# 背景が#FFFFFFの要素を表している %>
+
 
 <div class="messages">
+<%# チャットルーム名とformの間にある要素 %>
+  <div class="message">
+<%# 投稿した人の名前 投稿日時 投稿文を含んでいる要素である %>
+    <div class="upper-message">
+<%# 投稿した人の名前 投稿日時のみを含む要素である %>
+      <div class="message-user">
+<%# 投稿者の名前のみを含む要素である %>
+        Tom
+      </div>
+      <div class="message-date">
+<%# 投稿日時のみを含む要素である %>
+        2020/3/31(Wed) 12:43:30
+      </div>
+    </div>
+    <div class="lower-message">
+<%# 投稿内容を含む要素である %>
+<%# おそらくこのdivは不必要かと思われる なぜならばlower-messageに対するプロパティをmessage-contentに掛けても挙動は前のものと変わらないから %>
+      <div class="message-content">
+<%# 投稿内容を含む要素である %>
+        おはよう
+      </div>
+    </div>
+  </div>
+
+  <div class="message">
+<%# ここについての説明は一つ前のものと同じなので省きます %>
+    <div class="upper-message">
+      <div class="message-user">
+        Tom
+      </div>
+      <div class="message-date">
+        2020/3/31(Wed) 12:47:30
+      </div>
+    </div>
+    <div class="lower-message">
+      <div class="message-content">
+        こんばんは
+      </div>
+    </div>
+  </div>
 </div>
-<%# 背景が#FAFAFAの要素を表している %>
+
 
 <div class="form">
+<%# チャットをする場所の下にある要素である %>
+  <div class="form-input">
+<%# メッセージの内容を記述する場所の要素である %>
+<%# form-inputの要素の範囲とform-messageの要素の範囲は全く同じであるためform-inputのdivタグは作成する必要がない  %>
+    <input class="form-message" placeholder= "type a message">
+<%# メッセージの内容を記述する場所の要素である %>
+<%# inputタグを使うことでフォームの入力欄を作成できる inputタグには終了タグは無い  %>
+<%# placeholder属性は入力フォームに仮の文字列を入れることができる %>
+     <label class="form-image">
+<%# 画像ボタンの枠線までの要素である %>
+<%# input要素にtype属性としてfileを指定すると「ファイルを選択」ボタンが表示されてしまう %>
+<%# そのボタンを消すためにinput要素にclass属性を付与して表示させないようにしている %>
+<%# 表示させないようにすると今度画像をアップロードしたいのにクリックをすることができなくなる %>
+<%# それを防ぐために画像ボタンの親要素であるform-imageにlabelタグを使用することで %>
+<%# それまではクリックをしても何も起きなかった画像ボタンがクリックをすると画像をアップロードできるようになる %>
+      <span class="image-file">画像</span>
+      <input type="file" class="hidden">
+<%# spanタグを使うことでブラウザに表示させる文字列がインライン要素つまり横並びになる。divタグやpタグは文字列が改行され縦に表示されていくブロック要素である %>
+<%# input要素のtype属性でfileを指定してあげることで画像をアップロードすることができる %>
+<%# ちなみにaccept属性でアップロード可能なファイルの種類をあらかじめ制限出来る(png,jpegなど) %>
+<%# inputタグにclass属性を指定することでCSSをあてることができる %>
+    </label>
+  </div>
+  <input class="form-submit" type="submit" value="送信">
+<%# 送信ボタンの要素である %>
+<%# inputタグにはtype属性がありそれにsubmitを指定することで送信ボタンを作成することが出来る %>
+<%# value属性はフォームの送信をしたときにどのような値を送信するのかを決めることができる %>
+<%# 送信ボタンに限ってはvalue属性で指定した文字列が表示される %>
 </div>
-<%# 背景が#DDDDDDの要素を表している %>
+
