@@ -1,11 +1,13 @@
 <div class="side-bar-header">
   <div class="header-name">
 <%# 親要素のside-bar-headerの子要素としてheader-nameというdivを作っている %>
-    <a href="#">Tom</a>
-<%# href属性を使うときは必ず開始タグと終了タグにaタグを指定する %>
-<%# href属性でリンクの移動先を指定している 今回は空ののリンク先(#)を指定しているため %>
-<%# クリックしても画面は遷移しないがURLだけ変わる %>
-<%# http://localhost:3000/# に変わります！ %>
+     <%= link_to current_user.name, edit_user_path(current_user) %>
+<%# 「チャットを作成する」ボタンの隣に現在ログインしているユーザーの名前がリンクとして表示される %>
+<%# そのリンク先を編集ページにしたいのでrails routesで確認するとusers#editにあたるprefixがedit_user なのでそのようなpath名にしている %>
+<%# なぜそのパスに引数としてcurrent_userが渡されているのかというと理由は２つあります %>
+<%# ①パスが送られた(クリックした)ときに編集画面の入力欄にcurrent_userの情報を残しておきたいから %>
+<%# ②URI patternとして/users/:id/editとあり編集をするにはcurrent_userの情報を持たせないといけないから %>
+<%# ②に関してだがidの情報を持たせれば良いので引数名をcurrent_user.idにしてもエラーは起こらない %>
   </div>
   <div class="create-room">
     <a href="#">チャットを作成する</a>
