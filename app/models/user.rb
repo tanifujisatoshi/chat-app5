@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
-# Nameを空のまま新規アカウントを作成させないようにしている
-# emailとpasswordに関してはdeviseの機能によってデフォルトでnull: falseがかかっているのでバリデーションを記述する必要がない
+
+  has_many :room_users
+  has_many :rooms, through: :room_users
+  # room_usersとは1対多の関係にあるのでhas_manyオプションを使ってそのように表記している
+  # usersテーブルは複数のチャットルームを持っているのでhas_manyオプションを使ってそのように表記している
+  # 多対多のアソシエーションを組むときには中間テーブルを用意する必要があるためthroughオプションを使ってそのように記述している
 end
