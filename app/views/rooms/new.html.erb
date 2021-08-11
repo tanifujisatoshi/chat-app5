@@ -1,6 +1,9 @@
 <div class='chat-room-form'>
   <h1>新規チャットルーム</h1>
   <%=form_with model: @room, local: true do |f|%>
+  <%# form_withの引数として@roomを渡している %>
+  <%# この@roomはRoomsControllerのRoom.new(roomsテーブルの新規のインスタンス)を指していて %>
+  <%# このようにすることで@roomが適切なパスに送られチャットルームを作成することができる %>
     <div class='chat-room-form__field'>
       <div class='chat-room-form__field--left'>
         <%= f.label :チャットルーム名, class: 'chat-room-form__label'%>
