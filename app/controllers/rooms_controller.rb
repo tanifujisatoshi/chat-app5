@@ -1,4 +1,10 @@
 class RoomsController < ApplicationController
+  
+  def index
+    # ルートパスが送られた次にコントローラにroomsのindexは無いかを確認するのでこの記述は必要
+    # この記述があることでroomsのindex.html.erbを表示できる
+  end
+  
   def new
     @room = Room.new
   # 新規チャットルームを作成するためにroomsテーブルにnewメソッドを使うことで新規のインスタンスを作成している
