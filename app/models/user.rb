@@ -8,7 +8,6 @@ class User < ApplicationRecord
 
   has_many :room_users
   has_many :rooms, through: :room_users
-  # room_usersとは1対多の関係にあるのでhas_manyオプションを使ってそのように表記している
-  # usersテーブルは複数のチャットルームを持っているのでhas_manyオプションを使ってそのように表記している
-  # 多対多のアソシエーションを組むときには中間テーブルを用意する必要があるためthroughオプションを使ってそのように記述している
+  has_many :messages
+  # ユーザーは複数のメッセージを送信できるのでhas_manyを使っている
 end
