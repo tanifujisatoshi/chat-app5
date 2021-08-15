@@ -17,12 +17,13 @@
 
 <div class="rooms">
    <% current_user.rooms.each do |room| %>
-<%# 現在ログインしているユーザーが所属しているroomsテーブルのレコードの数だけdo~endが繰り返される %>
-<%# そのレコードの情報が変数roomに一つずつ格納されていく %>
     <div class="room">
       <div class="room-name">
-        <a href="#"><%= room.name %></a>
-<%# 所属しているチャットルームの名前が表示される リンク先は空である %>
+        <%= link_to room.name, room_messages_path(room) %>
+<%# 現在ログインしているユーザーが属しているルーム名が表示されそれがメッセージ一覧を表示するリンクとなる %>
+<%# メッセージ一覧を表示するパスはrails routesで確認するとroom_messagesとなっているのでそのパス名を記述する %>
+<%# messagesコントローラーはroomsコントローラーにネストされたためroom_messages_pathのURIが/room/:room_id/messagesとなっているのでroomsテーブルのレコードのidを引数としてpathと共にコントローラーに送らなければならない %>
+<%# 引数名がroomになっている理由は現在ログインしているユーザーが属しているroomsテーブルのレコードが変数roomに格納されているので引数名がそのようになっている %>
       </div>
     </div>
   <% end %>

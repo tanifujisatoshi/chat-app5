@@ -63,34 +63,19 @@
 </div>
 
 
-<div class="form">
-<%# チャットをする場所の下にある要素である %>
+<%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
+<%# form_withのmodelオプションで@room, @messageというインスタンス変数を指定している理由は %>
+<%# messagesコントローラーがroomsコントローラーにネストされているからである %>
   <div class="form-input">
-<%# メッセージの内容を記述する場所の要素である %>
-<%# form-inputの要素の範囲とform-messageの要素の範囲は全く同じであるためform-inputのdivタグは作成する必要がない  %>
-    <input class="form-message" placeholder= "type a message">
-<%# メッセージの内容を記述する場所の要素である %>
-<%# inputタグを使うことでフォームの入力欄を作成できる inputタグには終了タグは無い  %>
-<%# placeholder属性は入力フォームに仮の文字列を入れることができる %>
-     <label class="form-image">
-<%# 画像ボタンの枠線までの要素である %>
-<%# input要素にtype属性としてfileを指定すると「ファイルを選択」ボタンが表示されてしまう %>
-<%# そのボタンを消すためにinput要素にclass属性を付与して表示させないようにしている %>
-<%# 表示させないようにすると今度画像をアップロードしたいのにクリックをすることができなくなる %>
-<%# それを防ぐために画像ボタンの親要素であるform-imageにlabelタグを使用することで %>
-<%# それまではクリックをしても何も起きなかった画像ボタンがクリックをすると画像をアップロードできるようになる %>
+    <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
+<%# placeholder属性に文字列を入れるとブラウザではうっすら表示される %>
+    <label class="form-image">
+<%# labelタグを使うことで子要素が非表示でもクリックすることができる %>
       <span class="image-file">画像</span>
-      <input type="file" class="hidden">
-<%# spanタグを使うことでブラウザに表示させる文字列がインライン要素つまり横並びになる。divタグやpタグは文字列が改行され縦に表示されていくブロック要素である %>
-<%# input要素のtype属性でfileを指定してあげることで画像をアップロードすることができる %>
-<%# ちなみにaccept属性でアップロード可能なファイルの種類をあらかじめ制限出来る(png,jpegなど) %>
-<%# inputタグにclass属性を指定することでCSSをあてることができる %>
+      <%= f.file_field :image, class: 'hidden' %>
+<%# file_fieldを使うことで画像をアップロードすることができる %>
     </label>
   </div>
-  <input class="form-submit" type="submit" value="送信">
-<%# 送信ボタンの要素である %>
-<%# inputタグにはtype属性がありそれにsubmitを指定することで送信ボタンを作成することが出来る %>
-<%# value属性はフォームの送信をしたときにどのような値を送信するのかを決めることができる %>
-<%# 送信ボタンに限ってはvalue属性で指定した文字列が表示される %>
-</div>
-
+  <%= f.submit '送信', class: 'form-submit' %>
+<%# submitを使うことで送信ボタンを作成することができる %>
+<% end %>
