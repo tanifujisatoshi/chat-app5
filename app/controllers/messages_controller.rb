@@ -2,21 +2,23 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @room = Room.find(params[:room_id])
+    @messages = @room.messages.includes(:user)
+  # アソシエーションを利用しているのでDBへのアクセス回数が多くなる
+  # 今回はmessagesテーブルに関するusersテーブルの情報の取得をするためにメッセージと同じ回数アクセスが必要になる(これをN+1問題と呼ぶ)
+  # その問題を解決するためにincludesメソッド(これはallメソッドの代わりにもなっている！)を使っている
+  # @room.messagesはどのチャットルームで投稿されたメッセージなのかを意味している
+  # それにincludesメソッドを使用してさらに引数にmessagesテーブルに紐づくモデル名(今回はuser)を用意することでDBへのアクセス回数が減りN+1問題を解決できる
   end
 
   def create
     @room = Room.find(params[:room_id])
     @message = @room.messages.new(message_params)
     if @message.save
-    # メッセージが正しく保存された場合は以下の処理を行う
       redirect_to room_messages_path(@room)
-    # messagesコントローラーのindexのビューを表示させる
-    # そのパスのURIには/rooms/:room_id/messagesとあるのでメッセージを投稿したroomsテーブルのidをパスに持たせて送らなければならない
-    # なのでcreateアクションの直下にroomsのidを取得して@roomに代入しているのでそれを使う
     else
+      @messages = @room.messages.includes(:user)
+    # このように記述することで保存に失敗した場合でも投稿前と同じメッセージ一覧になっている
       render :index
-    # メッセージの保存に失敗した場合はmessagesコントローラーのindexのビューを表示させる
-    # if文の処理と同じように見えるがrenderメソッドを使用しているので入力した内容は残ったままである
     end
   end
 

@@ -20,46 +20,8 @@
 
 
 <div class="messages">
-<%# チャットルーム名とformの間にある要素 %>
-  <div class="message">
-<%# 投稿した人の名前 投稿日時 投稿文を含んでいる要素である %>
-    <div class="upper-message">
-<%# 投稿した人の名前 投稿日時のみを含む要素である %>
-      <div class="message-user">
-<%# 投稿者の名前のみを含む要素である %>
-        Tom
-      </div>
-      <div class="message-date">
-<%# 投稿日時のみを含む要素である %>
-        2020/3/31(Wed) 12:43:30
-      </div>
-    </div>
-    <div class="lower-message">
-<%# 投稿内容を含む要素である %>
-<%# おそらくこのdivは不必要かと思われる なぜならばlower-messageに対するプロパティをmessage-contentに掛けても挙動は前のものと変わらないから %>
-      <div class="message-content">
-<%# 投稿内容を含む要素である %>
-        おはよう
-      </div>
-    </div>
-  </div>
-
-  <div class="message">
-<%# ここについての説明は一つ前のものと同じなので省きます %>
-    <div class="upper-message">
-      <div class="message-user">
-        Tom
-      </div>
-      <div class="message-date">
-        2020/3/31(Wed) 12:47:30
-      </div>
-    </div>
-    <div class="lower-message">
-      <div class="message-content">
-        こんばんは
-      </div>
-    </div>
-  </div>
+  <%= render partial: 'message', collection: @messages %>
+<%# @messagesのレコードの数だけ_messages.html.erbを表示させる %>
 </div>
 
 
