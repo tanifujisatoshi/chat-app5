@@ -1,0 +1,21 @@
+<div class="message">
+  <div class="upper-message">
+    <div class="message-user">
+      <%= message.user.name %>
+  <%# collectionオプションで@messagesを指定したためrender partialで読み込まれるビューファイルではmessagesテーブルのレコードが入った変数messageを使うことができる %>
+  <%# messagesテーブルとusersテーブルにはアソシエーションが組まれているのでこのような記述ができる %>
+  <%# messagesテーブルのuser_idカラムを参照してそこからusersテーブルのnameカラムが表示できる %>
+    </div>
+    <div class="message-date">
+      <%= l message.created_at %>
+  <%# messagesテーブルのレコードが作成された時間を表している %>
+  <%# 似たようのものでupdated_atカラムが存在するがそれはレコードが更新された時間を表しているので混同しないように注意する %>
+    </div>
+  </div>
+  <div class="lower-message">
+    <div class="message-content">
+      <%= message.content %>
+  <%# messagesテーブルのcontentカラムが表示される %>
+    </div>
+  </div>
+</div>

@@ -25,6 +25,16 @@ class RoomsController < ApplicationController
     end
   end
 
+  def destroy
+    room = Room.find(params[:id])
+    room.destroy
+    redirect_to root_path
+  end
+  # destroyアクションの処理の流れについて
+  # ①ルームを削除しようとしたときrooms#destroyのURIは/rooms/:idなのでビューからparamsを通してハッシュでルームのidが送られてくる そのキーからバリューを取り出すためにparams[:id]と記述するそれがfindメソッドの引数となりroomsテーブルのレコードを取得できる
+  # ②destroyメソッドを使うことでroomという変数に代入したレコードを削除できる
+  # ③roomsコントローラーのindexアクションのビューに遷移する(チャット内容が表示されていない画面に遷移する)
+
   private
 
   def room_params
