@@ -7,12 +7,12 @@
     </div>
   </div>
   <div class="right-header">
-<%# chat-headerの子要素を横並べにさせるためにこのようなdivを作っている %>
     <div class="header-button">
-<%# チャット終了ボタンにCSSをあてたいためにこのようなdivを作っている %>
-      <a href="#">チャットを終了する</a>
-<%# aタグとhref属性を使用してリンク先を決めている %>
-<%# aタグで囲われた部分がリンク先として表示されるものである %>
+      <%= link_to "チャットを終了する", room_path(@room), method: :delete %>
+<%# link_toメソッドにより チャットを終了する と表示されそれがリンクとなる %>
+<%# roomsコントローラーのdestroyアクションのパスを指定したいのでroom_pathを指定している %>
+<%# そのパスのURIには/rooms/:idとあるので削除するルームのidを送らなければならないので引数にはroomsコントローラーのcreateアクションの@room = Room.new(room_params)の@roomをセットしている %>
+<%# 今回verbがDELETEなのでmethod: :deleteを追加している %>
     </div>
   </div>
 </div>
