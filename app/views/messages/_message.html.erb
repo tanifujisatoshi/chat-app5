@@ -15,7 +15,10 @@
   <div class="lower-message">
     <div class="message-content">
       <%= message.content %>
-  <%# messagesテーブルのcontentカラムが表示される %>
     </div>
+    <%= image_tag message.image.variant(resize: '500x500'), class: 'message-image' if message.image.attached? %>
+<%# messagesテーブルのレコードにファイルが添付されているかどうかをattached?メソッドで検証している %>
+<%# 画像が紐づいたモデル名.画像のファイル名.attached?とすることでメッセージを投稿したときに画像が添付されていないときは画像が表示されなくなる %>
+<%# メッセージを投稿したときに画像が添付されているときは image_tagからclass: 'message-image'まで読み込まれる %>
   </div>
 </div>
