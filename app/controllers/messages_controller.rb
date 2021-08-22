@@ -25,11 +25,10 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content).merge(user_id: current_user.id)
-  # requireメソッドでparamsから送られるハッシュのmessageを取得している
-  # permitメソッドでcontentカラムの保存の許可をしている
-  # mergeメソッドを使って誰が(user_id)メッセージを投稿したのかを示すために記述している
-  # ログインしている人しかメッセージを投稿できないのでuser_idに対応する部分をcurrent_user.idにしている
+    params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
+  # フォームから送られてきたparamsのハッシュからrequireメソッドを使いmessageキーのバリューを取り出している
+  # そのバリューの中にあるキーであるcontentキー, imageキーの値をpermitメソッドを使いmessagesテーブルに保存を許可している
+  # 誰がメッセージを投稿したかを判別するためにmergeメソッドを使いuser_id(誰が)の部分をcurrent_user.id(現在ログインしているユーザー)にしている
   end
 
 end
